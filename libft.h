@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 20:25:45 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/06 13:07:54 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/06 14:22:57 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ char	*ft_strrchr(const char *str, int c);
 char	*ft_tolower(char	*str);
 char	*ft_toupper(char	*str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif
