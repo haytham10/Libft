@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 18:59:41 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/05 19:37:25 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/06 12:18:14 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	n = len - start;
 	dest = (char *)malloc(sizeof(char) * (n + 1));
+	if (dest == NULL)
+		return (NULL);
 	ft_strncpy(dest, (s + start), n);
 	return (dest);
 }
