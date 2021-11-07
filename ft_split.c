@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 09:11:38 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/07 10:35:51 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/07 10:55:48 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,4 @@ char	**ft_split(char const *s, char c)
 	ft_fill(s, res, c);
 	res[words] = 0;
 	return (res);
-}
-
-#include <stdio.h>
-int	main()
-{
-	char	str[] = "I just took a penis in my butt wanna know how it feels";
-	printf("%s\n", ft_split(str, ' ')[0]);
 }
