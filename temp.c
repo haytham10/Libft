@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 static void		ft_free_if_error(int nbr, char **res)
 {
 	while (nbr >= 0)
@@ -88,7 +92,7 @@ static void		ft_fill_res(char const *s, char **res, char c)
 	}
 }
 
-char			**ft_strsplit(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	int		words;
 	char	**res;
