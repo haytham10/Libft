@@ -5,81 +5,128 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 14:25:19 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/06 17:41:43 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/07 09:11:38 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/07 10:35:51 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <stdio.h>
+#include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static  void    ft_free(int n, char **res)
 {
-	int		n;
-	char	*dest;
-
-	n = len - start;
-	dest = (char *)malloc(sizeof(char) * (n + 1));
-	if (dest == NULL)
-		return (NULL);
-	strncpy(dest, (s + start), n);
-	return (dest);
+    while (n >= 0)
+    {
+        if (res[n] != NULL)
+            free(res[n]);
+        n--;
+    }
+    free(res);
 }
 
-static	size_t	str_count(char const *s, char c)
+static int	n_w(char const *s, char c)
 {
-	size_t	i;
+	int	i;
+	int	n;
 
 	i = 0;
-	while (*s)
+	n = 0;
+	while (s[i])
 	{
-		if (*s != c)
-		{
+		if (s[i] == c)
 			i++;
-			while (*s != '\0' && *s != c)
-				s++;
-		}
+		else if (s[i] < 32 || s[i] > 126)
+			return (0);
 		else
-			s++;
+		{
+			n++;
+			while (s[i] && s[i] != c)
+				i++;
+		}
 	}
-	return (i);
+	return (n);
+}
+
+static int	ft_allocate(char const *s, char **res, char c)
+{
+	int	i;
+	int	n;
+	int	size;
+
+	i = 0;
+	n = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			i++;
+		else
+		{
+			s = 0;
+			while (s[i] && s[i++] != c)
+				size++;
+			res[n] = NULL;
+			if (!(res[n] = (char*)malloc(sizeof(*s) * size + 1)))
+			{
+				ft_free(n, res);
+				return (0);
+			}
+			n++;
+		}
+	}
+	return (1);
+}
+
+static void	ft_fill(char const *s, char **res, char c)
+{
+	int	i;
+	int	n;
+	int	size;
+
+	i = 0;
+	n = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			i++;
+		else
+		{
+			size = 0;
+			while (s[i] && s[i] != c)
+			{
+				res[n][size] = s[i];
+				size++;
+				i++;
+			}
+			res[n][size] = '\0';
+			n++;
+		}
+	}
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	len;
-	size_t	i;
-	const char	*start;
-	char		**split;
+	int		words;
+	char	**res;
 
-	split = (char**)malloc(((str_count(s, c)) + 1) * sizeof(*split));
-			if (!split)
-				return (0);
-			i = 0;
-			while (*s)
-			{
-				while (*s && *s == c)
-					s++;
-				start = s;
-				len = 0;
-				while (*s && *s == c)
-				{
-					s++;
-					len++;
-				}
-				if (*(s - 1) != c)
-					split[i++] = ft_substr(start , 0, len);
-			}
-			split[i] = 0;
-			return (split);
-
+	if (s == NULL || c == '\0')
+	{
+		if (!(res = (char**)malloc(sizeof(char*))))
+			return (0);
+		res[0] = 0;
+		return (res);
+	}
+	words = n_w(s, c);
+	if (!(res = (char**)malloc(sizeof(char*) * words + 1)))
+		return (0);
+	ft_allocate(s, res, c);
+	ft_fill(s, res, c);
+	res[words] = 0;
+	return (res);
 }
 
-
-int main()
+#include <stdio.h>
+int	main()
 {
-
-	char s[]= "i just took a penies in my butt, i just want to know how it feels";
-	printf("%s", ft_split(s,' ')[0]);
+	char	str[] = "I just took a penis in my butt wanna know how it feels";
+	printf("%s\n", ft_split(str, ' ')[0]);
 }
