@@ -59,8 +59,10 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	while (i < words)
 	{
-		while (*s == c)
+		while (*s && *s == c)
 			s++;
+		if (!(*s))
+			return (free(res), NULL);
 		len = length((char *)s, c);
 		res[i] = my_substr(s, len);
 		if (!res[i])
