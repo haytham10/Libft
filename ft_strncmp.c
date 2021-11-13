@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 01:50:11 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/13 01:51:14 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/13 02:26:41 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
-	int	res;
+	size_t	i;
 
 	i = 0;
 	if (n == 0)

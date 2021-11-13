@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 00:53:36 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/13 00:55:01 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/13 02:23:32 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dlen)
 {
-	int	i;
-	int	j;
-	int	slen;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
