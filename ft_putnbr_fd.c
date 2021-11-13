@@ -1,47 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 00:48:06 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/13 00:53:17 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 00:04:51 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 00:05:27 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*my_strcat(char *dest, const char *src)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0')
+	if (n == -2147483648)
 	{
-		dest[i] = src[j];
-		j++;
-		i++;
+		write (fd, "-2147483648", 11);
 	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*res;
-
-	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
-		return (NULL);
-	else if (res)
+	if (n < 0)
 	{
-		ft_memcpy(res, s1, ft_strlen(s1));
-		my_strcat(res, s2);
+		n = n * -1;
+		ft_putchar_fd(45, fd);
 	}
-	return (res);
+	if (n / 10 > 0)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	ft_putchar_fd (n % 10 + '0', fd);
 }

@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 12:31:02 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/02 12:41:14 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 00:53:36 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 00:55:01 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char	*dest, char	*src, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t dlen)
 {
 	int	i;
-	int	s;
+	int	j;
+	int	slen;
 
 	i = 0;
-	if (src[i] == 0)
-	{
-		s = ft_strlen(dest);
-		return (s);
-	}
-	s = ft_strlen(dest);
-	while (src[i] && i < n && n != '\0')
-	{
-		dest[s] = src[i];
+	j = 0;
+	while (dst[i])
 		i++;
-		s++;
+	while (src[j] && i < dlen)
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
 	}
-	dest[s] = '\0';
-	return (s);
+	dst[i] = '\0';
+	return (i);
 }

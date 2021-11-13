@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 20:06:55 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/04 20:14:17 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 00:19:51 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 00:28:56 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup(const char *s1)
 {
-	char	*dest;
+	char	*s2;
 
-	dest = malloc(ft_strlen(s1) + 1);
-	if (dest == NULL)
+	s2 = malloc(strlen(s1) + 1);
+	if (s2 == NULL)
 		return (NULL);
-	ft_strcpy(dest, s1);
-	return (dest);
+	ft_memcpy(s2, s1, ft_strlen(s1));
+	return (s2);
 }

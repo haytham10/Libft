@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/29 11:23:56 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/05 19:37:51 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/12 23:57:39 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/12 23:59:45 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,23 @@
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
+	char	*s1;
+	char	*s2;
 
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	if ((size_t)dest - (size_t)src < n)
+	if (!dest || !src)
+		return (NULL);
+	s1 = (char *)dest;
+	s2 = (char *)src;
+	if (dest > src)
 	{
 		i = n - 1;
-		while (i < n)
+		while (n--)
 		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			s1[i] = s2[i];
 			i--;
 		}
 	}
-	else
-	{
-		while (i < n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
-	}
+	else if (dest < src)
+		ft_memcpy(dest, src, n);
 	return (dest);
 }

@@ -5,25 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 11:34:39 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/02 12:30:26 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 01:44:42 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 01:46:39 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char	*dest, char	*src, size_t n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	i;
+	size_t	srclen;
 
-	i = 0;
-	if (src[i] == 0)
-		return (ft_strlen(src));
-	while (src[i] && i < n && n != 0)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (ft_strlen(src));
+	if (!src || !dst)
+		return (NULL);
+	size--;
+	srclen = strlen(src);
+	if (srclen > size)
+		srclen = size;
+	ft_memcpy(dst, src, srclen);
+	dst[srclen] = '\0';
+	return (srclen);
 }

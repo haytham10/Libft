@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 15:56:20 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/03 16:23:32 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/12 23:17:57 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/12 23:18:13 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char	*str)
+int	ft_atoi(const char	*str)
 {
 	int	i;
 	int	s;

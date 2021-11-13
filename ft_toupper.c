@@ -5,23 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 12:43:08 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/02 12:56:40 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 02:05:00 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 02:05:32 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_toupper(char	*str)
+int	ft_toupper(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] <= 'z' && str[i] >= 'a')
-			str[i] = str[i] - 32;
-		i++;
-	}
-	return (str);
+	if (c <= 'z' && c >= 'a')
+		c -= 32;
+	return (c);
 }

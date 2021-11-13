@@ -5,31 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 15:09:46 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/03 15:55:52 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 01:51:34 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 01:54:31 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(char	*s1, char	*s2, size_t	n)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int		i;
+	size_t	i;
 	size_t	j;
+	size_t	len;
 
-	i = 0;
-	if (s2[i] == '\0')
-		return (s1);
-	while (s1[i] && i < n && n)
+	if (*s1 == '\0' || *s2 == '\0')
+		return ((char *)s1);
+	if (!s1 || !s2 || !n)
+		return (NULL);
+	i = -1;
+	while (s1[++i] && n)
 	{
 		j = 0;
-		while (s1[i + j] == s2[j] && s1[i + j])
+		len = n;
+		while (s2[j] && s2[j] == s1[i + j] && len--)
 		{
-			if (s2[j + 1] == '\0')
-				return (&s1[i]);
 			j++;
+			if (!s2[j])
+				return ((char *)(s1 + i));
+			if (!len && !s2[j])
+				return (NULL);
 		}
-		i++;
+		n--;
 	}
-	return (0);
+	return (NULL);
 }

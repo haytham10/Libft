@@ -5,121 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 09:11:38 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/07 10:55:48 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 00:06:59 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 00:17:39 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static  void    ft_free(int n, char **res)
-{
-    while (n >= 0)
-    {
-        if (res[n] != NULL)
-            free(res[n]);
-        n--;
-    }
-    free(res);
-}
-
-static int	n_w(char const *s, char c)
+static int	length(char *str, char c)
 {
 	int	i;
-	int	n;
 
 	i = 0;
-	n = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			i++;
-		else if (s[i] < 32 || s[i] > 126)
-			return (0);
-		else
-		{
-			n++;
-			while (s[i] && s[i] != c)
-				i++;
-		}
-	}
-	return (n);
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
 }
 
-static int	ft_allocate(char const *s, char **res, char c)
+static int	ft_count(char const *str, char c)
 {
 	int	i;
-	int	n;
-	int	size;
 
 	i = 0;
-	n = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			s = 0;
-			while (s[i] && s[i++] != c)
-				size++;
-			res[n] = NULL;
-			if (!(res[n] = (char*)malloc(sizeof(*s) * size + 1)))
-			{
-				ft_free(n, res);
-				return (0);
-			}
-			n++;
-		}
-	}
-	return (1);
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
 }
 
-static void	ft_fill(char const *s, char **res, char c)
+static char	*my_substr(char const *s, size_t len)
 {
-	int	i;
-	int	n;
-	int	size;
+	int		n;
+	char	*dest;
 
-	i = 0;
-	n = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			size = 0;
-			while (s[i] && s[i] != c)
-			{
-				res[n][size] = s[i];
-				size++;
-				i++;
-			}
-			res[n][size] = '\0';
-			n++;
-		}
-	}
+	n = len;
+	dest = (char *)malloc(sizeof(char) * (n + 1));
+	if (!dest)
+		return (NULL);
+	ft_strlcpy(dest, s, len + 1);
+	return (dest);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		words;
 	char	**res;
+	int		words;
+	int		len;
+	int		i;
 
-	if (s == NULL || c == '\0')
+	words = ft_count(s, c);
+	res = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < words)
 	{
-		if (!(res = (char**)malloc(sizeof(char*))))
-			return (0);
-		res[0] = 0;
-		return (res);
+		while (*s == c)
+			s++;
+		len = length((char *)s, c);
+		res[i] = my_substr(s, len);
+		if (!res[i])
+			return (NULL);
+		s += len;
+		i++;
 	}
-	words = n_w(s, c);
-	if (!(res = (char**)malloc(sizeof(char*) * words + 1)))
-		return (0);
-	ft_allocate(s, res, c);
-	ft_fill(s, res, c);
-	res[words] = 0;
+	res[i] = NULL;
 	return (res);
 }

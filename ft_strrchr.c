@@ -5,19 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 14:22:25 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/03 14:41:15 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 01:56:27 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 01:57:49 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 char	*ft_strrchr(const char *str, int c)
 {
 	int	i;
 
-	i = strlen(str) - 1;
+	i = ft_strlen(str) - 1;
 	if (str == NULL)
 		return (NULL);
 	while (str[i])

@@ -1,47 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 00:48:06 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/13 00:53:17 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 01:48:16 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 01:49:57 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*my_strcat(char *dest, const char *src)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
-	int	j;
+	size_t	i;
+	char	*str;
 
-	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0')
-	{
-		dest[i] = src[j];
-		j++;
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*res;
-
-	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
+	if (!s)
 		return (NULL);
-	else if (res)
+	i = 0;
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s)) + 1);
+	if (str == NULL)
+		return (NULL);
+	while (s[i])
 	{
-		ft_memcpy(res, s1, ft_strlen(s1));
-		my_strcat(res, s2);
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	return (res);
+	str[i] = '\0';
+	return (str);
 }

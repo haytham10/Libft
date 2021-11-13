@@ -5,21 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 11:26:18 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/06 13:07:46 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 01:46:56 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 01:47:59 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char	*str)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (str == NULL)
-		return (0);
-	while (str[i])
+	while (s[i])
 		i++;
 	return (i);
 }

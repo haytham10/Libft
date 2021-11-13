@@ -5,24 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 15:37:58 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/02 21:49:14 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/12 23:18:54 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/12 23:23:32 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned char		*p;
-	size_t				i;
+	int				i;
+	unsigned char	*str;
 
-	i = 0;
-	p = (unsigned char *)s;
-	while (i < n)
+	str = (unsigned char *)s;
+	while (n--)
 	{
-		p[i] = 0;
-		i++;
+		*str = '\0';
+		str++;
 	}
-	s = p;
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 18:59:41 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/06 12:18:14 by hmokhtar         ###   ########.fr       */
+/*   Created: 2021/11/13 02:00:14 by hmokhtar          #+#    #+#             */
+/*   Updated: 2021/11/13 02:04:08 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	n = len - start;
 	dest = (char *)malloc(sizeof(char) * (n + 1));
-	if (dest == NULL)
+	if (!dest)
 		return (NULL);
-	ft_strncpy(dest, (s + start), n);
+	ft_strlcpy(dest, (s + start), n + 1);
 	return (dest);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char	src[] = "implementation of ft_substr";
-	int	m = 7;
-	int	n = 12;
-	char	*dest = ft_substr(src, m, n);
-
-	printf("%s\n", dest);
-	return (0);
-}*/
