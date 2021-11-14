@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 23:39:25 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/12 23:47:32 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/14 21:29:37 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static long int	ft_len(int n)
 
 	len = 0;
 	if (n == 0)
-		return (len);
+		return (1);
 	else if (n < 0)
 	{
 		n *= -1;
@@ -51,6 +51,8 @@ char	*ft_itoa(int n)
 
 	s = 1;
 	len = ft_len(n);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	res = (char *)malloc(sizeof(char) * (len + 2));
 	if (!(res))
 		return (NULL);

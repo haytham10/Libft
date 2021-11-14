@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 00:48:06 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/13 00:53:17 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/14 02:20:09 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	else if (res)
 	{
-		ft_memcpy(res, s1, ft_strlen(s1));
+		ft_memcpy(res, s1, ft_strlen(s1) + 1);
 		my_strcat(res, s2);
 	}
 	return (res);

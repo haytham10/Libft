@@ -6,26 +6,32 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 00:04:51 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/13 00:05:27 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/14 21:30:43 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static unsigned int	ft_module(int n)
+{
+	if (n < 0)
+		return (n * (-1));
+	else
+		return (n);
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
-	{
-		write (fd, "-2147483648", 11);
-	}
+	unsigned int	num;
+
 	if (n < 0)
+		ft_putchar_fd('-', fd);
+	num = ft_module(n);
+	if (num >= 10)
 	{
-		n = n * -1;
-		ft_putchar_fd(45, fd);
+		ft_putnbr_fd(num / 10, fd);
+		ft_putnbr_fd(num % 10, fd);
 	}
-	if (n / 10 > 0)
-	{
-		ft_putnbr_fd(n / 10, fd);
-	}
-	ft_putchar_fd (n % 10 + '0', fd);
+	else
+		ft_putchar_fd(num + '0', fd);
 }
