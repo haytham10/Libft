@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 03:21:49 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/14 21:32:01 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:57:52 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ static char	*ft_strcpy(const char *src, int size)
 	dest = (char *)malloc(sizeof(char) * size);
 	if (!dest)
 		return (NULL);
-	dest[size - 1] = 0;
-	while (--size)
+	dest[size] = 0;
+	while (size--)
 	{
-		dest[size - 1] = src[size - 1];
+		dest[size] = src[size];
 	}
 	return (dest);
 }
@@ -80,28 +80,28 @@ static void	*free_tab(char **tab)
 char	**ft_split(const char *str, char charset)
 {
 	char	**rst;
-	int		k;
+	int		i;
 	int		count;
 	int		n;
 
-	k = 0;
+	i = 0;
 	if (!str)
 		return (NULL);
 	count = ft_count_words(str, charset);
-	rst = (char **)malloc(sizeof(char *) * (count + 1));
+	rst = malloc(sizeof(char *) * (count + 1));
 	if (!rst)
 		return (NULL);
-	while (k < count)
+	while (i < count)
 	{
 		while (*str && *str == charset)
 			str++;
 		if (!(*str))
 			return (free(rst), NULL);
 		n = ft_count_char(str, charset);
-		rst[k++] = ft_strcpy(str, (n + 1));
-		if (!rst[k - 1])
+		rst[i++] = ft_strcpy(str, (n));
+		if (!rst[i - 1])
 			return (free_tab(rst));
 		str += n;
 	}
-	return (rst[k] = NULL, rst);
+	return (rst[i] = NULL, rst);
 }
