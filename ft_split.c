@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 03:21:49 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/16 00:57:52 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/17 01:07:57 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	**ft_split(const char *str, char charset)
 	if (!str)
 		return (NULL);
 	count = ft_count_words(str, charset);
-	rst = malloc(sizeof(char *) * (count + 1));
+	rst = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!rst)
 		return (NULL);
 	while (i < count)
