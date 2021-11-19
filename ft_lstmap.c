@@ -6,7 +6,7 @@
 /*   By: hmokhtar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 01:06:59 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/19 01:15:29 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/19 01:18:29 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		ft_lstiter(lst, f);
 		lst = lst->next;
 	}
-	
 }
