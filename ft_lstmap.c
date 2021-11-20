@@ -6,7 +6,7 @@
 /*   By: hmokhtar <hmokhtar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 01:06:59 by hmokhtar          #+#    #+#             */
-/*   Updated: 2021/11/20 03:40:42 by hmokhtar         ###   ########.fr       */
+/*   Updated: 2021/11/20 03:55:00 by hmokhtar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f)
 		return (NULL);
-	first = 0;
+	first = NULL;
 	while (lst)
 	{
 		new = ft_lstnew((*f)(lst->content));
