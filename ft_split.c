@@ -51,17 +51,17 @@ static int	ft_count_char(const char *str, char charset)
 	return (i);
 }
 
-static char	*ft_strcpy(const char *src, int size)
+static char	*my_strcpy(const char *src, int size)
 {
 	char	*dest;
 
 	dest = (char *)malloc(sizeof(char) * size);
 	if (!dest)
 		return (NULL);
-	dest[size] = 0;
-	while (size--)
+	dest[size - 1] = 0;
+	while (--size)
 	{
-		dest[size] = src[size];
+		dest[size - 1] = src[size - 1];
 	}
 	return (dest);
 }
@@ -79,7 +79,7 @@ static void	*free_tab(char **tab)
 
 char	**ft_split(const char *str, char charset)
 {
-	char	**rst;
+	char	**res;
 	int		i;
 	int		count;
 	int		n;
@@ -88,20 +88,20 @@ char	**ft_split(const char *str, char charset)
 	if (!str)
 		return (NULL);
 	count = ft_count_words(str, charset);
-	rst = (char **)malloc(sizeof(char *) * (count + 1));
-	if (!rst)
+	res = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!res)
 		return (NULL);
 	while (i < count)
 	{
 		while (*str && *str == charset)
 			str++;
 		if (!(*str))
-			return (free(rst), NULL);
+			return (free(res), NULL);
 		n = ft_count_char(str, charset);
-		rst[i++] = ft_strcpy(str, (n));
-		if (!rst[i - 1])
-			return (free_tab(rst));
+		res[i++] = my_strcpy(str, (n + 1));
+		if (!res[i - 1])
+			return (free_tab(res));
 		str += n;
 	}
-	return (rst[i] = NULL, rst);
+	return (res[i] = NULL, res);
 }

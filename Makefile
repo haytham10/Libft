@@ -34,11 +34,11 @@ all : $(NAME)
 
 $(NAME):$(OBJS)
 	$(CC) $(FLAGS) -c $(SRCS)
-	ar crs $@ $^
+	ar cr $@ $(OBJS)
 
 bonus: $(NAME) $(BONUS)
 	$(CC) $(FLAGS) -c $(BONUS)
-	ar crs $(NAME) $(OBJSBONUS) $(OBJS)
+	ar cr $(NAME) $(OBJSBONUS) $(OBJS)
 
 clean:
 	rm -f $(OBJS) $(OBJSBONUS)
