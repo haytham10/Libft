@@ -33,7 +33,7 @@ This project is the very first project as a student at 42. I was need to recode 
 
 ## License
 
-This project is licensed under the MIT License - see the [link](https://choosealicense.com/licenses/mit/) for details.
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 
 ## Author
